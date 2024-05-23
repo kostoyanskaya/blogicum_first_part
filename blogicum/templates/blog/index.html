@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}
+    Лента записей
+    {% endblock %}
+    {% block content %}
+    <main>
+      <div class="container py-5">
+        <h1>Лента записей</h1>                        
+        <!-- Перебираем в цикле все посты -->
+        <hr>
+        {% for postt in post %}
+        <article>
+          <ul>
+            <li>
+              Место: {{ postt.location }}             
+            </li>
+            <li>
+              Дата: {{ postt.date }}
+            </li>
+            <li>
+              Категория: <a href="not-my-day">not-my-day</a>
+            </li>
+          </ul>          
+          <!-- Первые 10 слов -->
+          <p>
+            {{ postt.text|truncatewords:10 }}...
+          </p>
+          <a href="detail.html">Читать полный текст</a>
+        </article>
+        <hr>
+        {% endfor %}                 
+      </div>
+    </main>
+    {% endblock %}
