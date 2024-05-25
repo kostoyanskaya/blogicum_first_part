@@ -6,26 +6,24 @@
     <main>
       <div class="container py-5">
         <h1>Лента записей</h1>                        
-        <!-- Перебираем в цикле все посты -->
         <hr>
-        {% for postt in post reversed %}
+        {% for post in post reversed %}
         <article>
           <ul>
             <li>
-              Место: {{ postt.location }}             
+              Место: {{ post.location }}             
             </li>
             <li>
-              Дата: {{ postt.date }}
+              Дата: {{ post.date }}
             </li>
             <li>
-              Категория: <a href="{% url 'blog:category_posts'  postt.category %}">{{ postt.category }}</a>
+              Категория: <a href="{% url 'blog:category_posts'  post.category %}">{{ post.category }}</a>
             </li>
           </ul>          
-          <!-- Первые 10 слов -->
           <p>
-            {{ postt.text|truncatewords:10 }}...
+            {{ post.text|truncatewords:10 }}...
           </p>
-          <a href="{% url 'blog:post_detail' postt.id %}">Читать полный текст</a>
+          <a href="{% url 'blog:post_detail' post.id %}">Читать полный текст</a>
           {% if not forloop.last %}
         </article>
         <hr>

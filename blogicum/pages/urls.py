@@ -1,6 +1,4 @@
-from django.urls import path, include
-
-from .views import about, rules
+from django.urls import path
 
 from . import views
 
