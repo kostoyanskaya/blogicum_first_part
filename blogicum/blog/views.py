@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+from django.http import Http404
+
 posts = [
     {
         'id': 0,
@@ -45,12 +47,15 @@ posts = [
 
 
 def index(request):
-    context = {'post': posts}
+    context = {'posts': posts}
     return render(request, 'blog/index.html', context)
 
 
 def post_detail(request, id):
-    context = {'post': posts[id]}
+    try:
+        context = {'post': posts[id]}
+    except IndexError:
+        raise Http404("Page not found")
     return render(request, 'blog/detail.html', context)
 
 
