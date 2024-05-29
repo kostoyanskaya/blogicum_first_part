@@ -46,6 +46,7 @@ posts = [
 
 all_post_ids = [post['id'] for post in posts]
 
+
 def index(request):
     return render(request, 'blog/index.html', {'posts': posts})
 
