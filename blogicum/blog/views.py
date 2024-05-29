@@ -44,14 +44,14 @@ posts = [
     },
 ]
 
+all_post_ids = [post['id'] for post in posts]
 
 def index(request):
     return render(request, 'blog/index.html', {'posts': posts})
 
 
 def post_detail(request, id):
-    post = next((post for post in posts if post['id'] == id), None)
-    if post is None:
+    if id not in all_post_ids:
         raise Http404('Post not found')
     return render(request, 'blog/detail.html', {'post': posts[id]})
 
